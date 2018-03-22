@@ -1,0 +1,20 @@
+name: aws-cli
+summary: Universal Command Line Interface for Amazon Web Services
+description: Universal Command Line Interface for Amazon Web Services
+version: git
+confinement: classic
+type: app
+grade: stable
+apps:
+  aws:
+    # Workaround https://bugs.launchpad.net/snappy/+bug/1664427
+    command: usr/bin/python3 $SNAP/bin/aws
+parts:
+  aws:
+    plugin: python
+    source: .
+  groff:
+    plugin: nil
+    # `aws help`
+    stage-packages:
+      - groff-base
