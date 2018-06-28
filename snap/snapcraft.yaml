@@ -13,15 +13,16 @@ apps:
   aws:
     # Workaround https://bugs.launchpad.net/snappy/+bug/1664427
     command: usr/bin/python3 $SNAP/bin/aws
-    completer: bin/aws_bash_completer
+    completer: bin/aws_bash_complete
 
 parts:
   aws:
     plugin: python
     source: https://github.com/aws/aws-cli.git
-    prepare: |
+    override-build: |
       git describe --tags $(git rev-list --tags --max-count=1) > $SNAPCRAFT_STAGE/version
       TAG=$(cat $SNAPCRAFT_STAGE/version)
       git checkout tags/$TAG
+      snapcraftctl build
     stage-packages:
       - groff-base  # for `aws help`
