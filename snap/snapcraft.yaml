@@ -5,17 +5,38 @@ description: |
  Services.
 version: git
 version-script: cat $SNAPCRAFT_STAGE/version
+base: core18
 
-confinement: classic
+confinement: strict
 grade: stable
+
+plugs:
+  personal-files:
+    read:
+      - $HOME/.aws
 
 apps:
   aws:
-    # Workaround https://bugs.launchpad.net/snappy/+bug/1664427
-    command: usr/bin/python3 $SNAP/bin/aws
+    adapter: full
+    command-chain:
+      - bin/launcher.sh
+    command: bin/aws
     completer: bin/aws_bash_completer
+    plugs:
+      - network
+      - network-bind
+      - personal-files
+      - home
 
 parts:
+  launcher:
+    plugin: dump
+    source: https://github.com/mikf/gallery-dl.git
+    source-depth: 1
+    organize:
+      snap/local/launchers/gallery-dl-launch: bin/launcher.sh
+    prime:
+      - bin/launcher.sh
   aws:
     plugin: python
     source: https://github.com/aws/aws-cli.git
