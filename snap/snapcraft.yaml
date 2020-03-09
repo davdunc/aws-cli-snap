@@ -45,5 +45,6 @@ parts:
       TAG=$(cat $SNAPCRAFT_STAGE/version)
       git checkout tags/$TAG
       snapcraftctl build
+      snapcraftctl set-version $TAG
     stage-packages:
       - groff-base  # for `aws help`
