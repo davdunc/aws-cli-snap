@@ -12,7 +12,7 @@ grade: stable
 
 plugs:
   personal-files:
-    read:
+    write:
       - $HOME/.aws
 
 apps:
