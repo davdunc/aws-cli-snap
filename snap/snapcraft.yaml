@@ -4,7 +4,6 @@ description: |
  This package provides a unified command line interface to Amazon Web
  Services.
 version: git
-version-script: cat $SNAPCRAFT_STAGE/version
 base: core18
 
 confinement: strict
