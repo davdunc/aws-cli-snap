@@ -24,7 +24,7 @@ apps:
     plugs:
       - network
       - network-bind
-      - personal-files
+      - dot-aws
       - home
 
 parts:
