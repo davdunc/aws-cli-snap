@@ -3,7 +3,6 @@ summary: Universal Command Line Interface for Amazon Web Services
 description: |
  This package provides a unified command line interface to Amazon Web
  Services.
-version: git
 base: core18
 adopt-info: aws
 confinement: strict
