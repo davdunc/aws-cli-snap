@@ -12,9 +12,9 @@ plugs:
   dot-aws:
     interface: personal-files
       write:
-        - $HOME/.aws
+      - $HOME/.aws
       read:
-        - $HOME/.aws
+      - $HOME/.aws
 apps:
   aws:
     adapter: full
