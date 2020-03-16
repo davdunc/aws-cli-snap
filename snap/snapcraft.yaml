@@ -10,10 +10,12 @@ confinement: strict
 grade: stable
 
 plugs:
-  personal-files:
-    write:
-      - $HOME/.aws
-
+  dot-aws:
+    interface: personal-files
+      write:
+        - $HOME/.aws
+      read:
+        - $HOME/.aws
 apps:
   aws:
     adapter: full
