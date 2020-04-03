@@ -4,9 +4,11 @@ description: |
  This package provides a unified command line interface to Amazon Web
  Services.
 version: git
-version-script: cat $SNAPCRAFT_STAGE/version
-
 confinement: classic
+grade: stable
+base: core18
+adopt-info: aws
+confinement: strict
 grade: stable
 
 apps:
@@ -14,7 +16,11 @@ apps:
     # Workaround https://bugs.launchpad.net/snappy/+bug/1664427
     command: usr/bin/python3 $SNAP/bin/aws
     completer: bin/aws_bash_completer
-
+    plugs:
+      - network
+      - network-bind
+      - dot-aws
+      - home
 parts:
   aws:
     plugin: python
