@@ -3,17 +3,16 @@ summary: Universal Command Line Interface for Amazon Web Services
 description: |
  This package provides a unified command line interface to Amazon Web
  Services.
-version: git
 base: core18
 adopt-info: aws
 confinement: strict
 grade: stable
 
 plugs:
-  personal-files:
+  dot-aws:
+    interface: personal-files
     write:
-      - $HOME/.aws
-
+    - $HOME/.aws
 apps:
   aws:
     adapter: full
@@ -24,9 +23,8 @@ apps:
     plugs:
       - network
       - network-bind
-      - personal-files
+      - dot-aws
       - home
-
 parts:
   launcher:
     plugin: dump
