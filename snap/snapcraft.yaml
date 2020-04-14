@@ -8,8 +8,6 @@ confinement: classic
 grade: stable
 base: core18
 adopt-info: aws
-confinement: strict
-grade: stable
 
 apps:
   aws:
@@ -19,7 +17,6 @@ apps:
     plugs:
       - network
       - network-bind
-      - dot-aws
       - home
 parts:
   aws:
